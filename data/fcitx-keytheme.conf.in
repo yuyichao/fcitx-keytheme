@@ -1,0 +1,8 @@
+[Addon]
+Name=fcitx-keytheme
+_GeneralName=Keytheme
+_Comment=Keytheme Sinhala Input Method For Fcitx
+Category=Module
+Enabled=True
+Library=fcitx-keytheme.so
+Type=SharedLibrary
