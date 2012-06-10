@@ -58,25 +58,87 @@ const int ABI_VERSION = FCITX_ABI_VERSION;
     fprintf(stderr, "\e[35m\e[1m"format"\e[0m", ##args)
 #define __pfunc__() eprintf("%s\n", __func__)
 
-struct {
+#define HOTKEY_ITEM(keyname)\
+    {FCITX_##keyname, KEYTHEME_KEY_##keyname}
+
+typedef struct {
     FcitxHotkey *hotkey;
-    const char *name;
-} HotkeyList[] = {
-    {FCITX_DELETE, "Delete"},
-    {FCITX_BACKSPACE, "Backspace"},
-    {FCITX_HOME, "Home"},
-    {FCITX_END, "End"},
-    {FCITX_RIGHT, "Right"},
-    {FCITX_LEFT, "Left"},
-    {FCITX_ESCAPE, "Escape"},
-    {FCITX_ENTER, "Enter"},
-    {FCITX_SEMICOLON, "Semicolon"},
-    {FCITX_SPACE, "Space"},
-    {FCITX_COMMA, "Comma"},
-    {FCITX_PERIOD, "Period"},
-    {FCITX_CTRL_5, "Reload"},
-    {FCITX_SEPARATOR, "Separator"},
+    int index;
+} HotkeyItem;
+HotkeyItem HotkeyList[] = {
+    HOTKEY_ITEM(DELETE),
+    HOTKEY_ITEM(BACKSPACE),
+    HOTKEY_ITEM(HOME),
+    HOTKEY_ITEM(END),
+    HOTKEY_ITEM(RIGHT),
+    HOTKEY_ITEM(LEFT),
+    HOTKEY_ITEM(ESCAPE),
+    HOTKEY_ITEM(ENTER),
+    HOTKEY_ITEM(SEMICOLON),
+    HOTKEY_ITEM(SPACE),
+    HOTKEY_ITEM(COMMA),
+    HOTKEY_ITEM(PERIOD),
+    {FCITX_CTRL_5, KEYTHEME_KEY_RELOAD},
+    HOTKEY_ITEM(SEPARATOR),
 };
+
+typedef FcitxHotkey DoubleHotkey[2];
+
+static void
+ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
+{
+    int i;
+    HotkeyItem *hotkey_item;
+    FcitxHotkey *tmpkey;
+    for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
+        hotkey_item = HotkeyList + i;
+        tmpkey = fc->hotkey_list[hotkey_item->index];
+        if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
+            hotkey_item->hotkey[1] = tmpkey[0];
+        }
+        if (tmpkey[1].sym != 0 && tmpkey[1].state != 0) {
+            hotkey_item->hotkey[0] = tmpkey[1];
+        }
+    }
+}
+
+static void
+SaveKeyThemeConfig(FcitxKeyThemeConfig* fc)
+{
+    FcitxConfigFileDesc *configDesc = GetFcitxKeyThemeConfigDesc();
+    FILE *fp = FcitxXDGGetFileUserWithPrefix("conf", "fcitx-keytheme.config",
+                                             "w", NULL);
+    if (!fp)
+        return;
+    FcitxConfigSaveConfigFileFp(fp, &fc->config, configDesc);
+    fclose(fp);
+}
+
+static boolean
+LoadKeyThemeConfig(FcitxKeyThemeConfig* fs)
+{
+    FILE *fp;
+    FcitxConfigFile *cfile;
+    FcitxConfigFileDesc *configDesc = GetFcitxKeyThemeConfigDesc();
+    if (!configDesc)
+        return false;
+
+    fp = FcitxXDGGetFileUserWithPrefix("conf", "fcitx-keytheme.config",
+                                       "r", NULL);
+
+    if (!fp) {
+        if (errno == ENOENT)
+            SaveKeyThemeConfig(fs);
+    }
+    cfile = FcitxConfigParseConfigFileFp(fp, configDesc);
+
+    FcitxKeyThemeConfigConfigBind(fs, cfile, configDesc);
+    FcitxConfigBindSync(&fs->config);
+
+    if (fp)
+        fclose(fp);
+    return true;
+}
 
 static void*
 FcitxKeyThemeCreate(FcitxInstance *instance)
@@ -84,18 +146,19 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     /* FcitxGlobalConfig* config = FcitxInstanceGetGlobalConfig(instance); */
     /* FcitxInputState *input = FcitxInstanceGetInputState(instance); */
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
+    FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
     if (!config_desc)
         return NULL;
 
     __pfunc__();
     bindtextdomain("fcitx-keytheme", LOCALEDIR);
-    FcitxHotkey mhotkey = {
-        .desc = NULL,
-        .sym = FcitxKey_D,
-        .state = FcitxKeyState_Ctrl
-    };
-    FCITX_DELETE[1] = mhotkey;
-    return instance;
+
+    if (!LoadKeyThemeConfig(&theme->config)) {
+        free(theme);
+        return NULL;
+    }
+    ApplyKeyThemeConfig(&theme->config);
+    return theme;
 }
 
 static void

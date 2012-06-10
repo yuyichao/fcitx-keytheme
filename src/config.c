@@ -22,17 +22,21 @@
 
 /* USE fcitx provided macro to bind config and variable */
 CONFIG_BINDING_BEGIN(FcitxKeyThemeConfig)
-CONFIG_BINDING_REGISTER("KeyTheme", "Delete", _delete)
-CONFIG_BINDING_REGISTER("KeyTheme", "Backspace", backspace)
-CONFIG_BINDING_REGISTER("KeyTheme", "Home", home)
-CONFIG_BINDING_REGISTER("KeyTheme", "End", end)
-CONFIG_BINDING_REGISTER("KeyTheme", "Right", right)
-CONFIG_BINDING_REGISTER("KeyTheme", "Left", left)
-CONFIG_BINDING_REGISTER("KeyTheme", "Escape", escape)
-CONFIG_BINDING_REGISTER("KeyTheme", "Semicolon", semicolon)
-CONFIG_BINDING_REGISTER("KeyTheme", "Space", space)
-CONFIG_BINDING_REGISTER("KeyTheme", "Comma", comma)
-CONFIG_BINDING_REGISTER("KeyTheme", "Period", period)
-CONFIG_BINDING_REGISTER("KeyTheme", "Reload", reload)
-CONFIG_BINDING_REGISTER("KeyTheme", "Separator", separator)
+CONFIG_BINDING_REGISTER("KeyTheme", "Delete", hotkey_list[KEYTHEME_KEY_DELETE])
+CONFIG_BINDING_REGISTER("KeyTheme", "Backspace",
+                        hotkey_list[KEYTHEME_KEY_BACKSPACE])
+CONFIG_BINDING_REGISTER("KeyTheme", "Home",
+                        hotkey_list[KEYTHEME_KEY_HOME])
+CONFIG_BINDING_REGISTER("KeyTheme", "End", hotkey_list[KEYTHEME_KEY_END])
+CONFIG_BINDING_REGISTER("KeyTheme", "Right", hotkey_list[KEYTHEME_KEY_RIGHT])
+CONFIG_BINDING_REGISTER("KeyTheme", "Left", hotkey_list[KEYTHEME_KEY_LEFT])
+CONFIG_BINDING_REGISTER("KeyTheme", "Escape", hotkey_list[KEYTHEME_KEY_ESCAPE])
+CONFIG_BINDING_REGISTER("KeyTheme", "Semicolon",
+                        hotkey_list[KEYTHEME_KEY_SEMICOLON])
+CONFIG_BINDING_REGISTER("KeyTheme", "Space", hotkey_list[KEYTHEME_KEY_SPACE])
+CONFIG_BINDING_REGISTER("KeyTheme", "Comma", hotkey_list[KEYTHEME_KEY_COMMA])
+CONFIG_BINDING_REGISTER("KeyTheme", "Period", hotkey_list[KEYTHEME_KEY_PERIOD])
+CONFIG_BINDING_REGISTER("KeyTheme", "Reload", hotkey_list[KEYTHEME_KEY_RELOAD])
+CONFIG_BINDING_REGISTER("KeyTheme", "Separator",
+                        hotkey_list[KEYTHEME_KEY_SEPARATOR])
 CONFIG_BINDING_END()

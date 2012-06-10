@@ -28,22 +28,33 @@
 
 #define _(x) dgettext("fcitx-theme", x)
 
+enum {
+    KEYTHEME_KEY_DELETE,
+    KEYTHEME_KEY_BACKSPACE,
+    KEYTHEME_KEY_HOME,
+    KEYTHEME_KEY_END,
+    KEYTHEME_KEY_RIGHT,
+    KEYTHEME_KEY_LEFT,
+    KEYTHEME_KEY_ESCAPE,
+    KEYTHEME_KEY_ENTER,
+    KEYTHEME_KEY_SEMICOLON,
+    KEYTHEME_KEY_SPACE,
+    KEYTHEME_KEY_COMMA,
+    KEYTHEME_KEY_PERIOD,
+    KEYTHEME_KEY_RELOAD,
+    KEYTHEME_KEY_SEPARATOR,
+    _KEYTHEME_KEY_LAST
+};
+
 typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
-    FcitxHotkey _delete[2];
-    FcitxHotkey backspace[2];
-    FcitxHotkey home[2];
-    FcitxHotkey end[2];
-    FcitxHotkey right[2];
-    FcitxHotkey left[2];
-    FcitxHotkey escape[2];
-    FcitxHotkey semicolon[2];
-    FcitxHotkey space[2];
-    FcitxHotkey comma[2];
-    FcitxHotkey period[2];
-    FcitxHotkey reload[2];
-    FcitxHotkey separator[2];
+    FcitxHotkey hotkey_list[_KEYTHEME_KEY_LAST][2];
 } FcitxKeyThemeConfig;
+
+typedef struct _FcitxKeyTheme {
+    FcitxKeyThemeConfig config;
+    FcitxInstance* owner;
+} FcitxKeyTheme;
 
 CONFIG_BINDING_DECLARE(FcitxKeyThemeConfig);
 
