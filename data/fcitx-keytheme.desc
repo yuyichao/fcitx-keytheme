@@ -62,3 +62,6 @@ Description=Reload
 Type=Hotkey
 DefaultValue=
 Description=Separator
+
+[DescriptionFile]
+LocaleDomain=fcitx-keytheme
