@@ -18,57 +18,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:4
-msgid "Delete"
-msgstr "删除"
-
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
 msgid "Backspace"
 msgstr "退格"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
-msgid "Home"
-msgstr "行首"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
-msgid "End"
-msgstr "行尾"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
-msgid "Right"
-msgstr "向右"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
-msgid "Left"
-msgstr "向左"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
-msgid "Enter"
-msgstr "回车"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
-msgid "Semicolon"
-msgstr "分号"
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
-msgid "Space"
-msgstr "空格"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:49
 msgid "Comma"
 msgstr "逗号"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
-msgid "Period"
-msgstr "句号"
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:4
+msgid "Delete"
+msgstr "删除"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
-msgid "Reload"
-msgstr "重载配置"
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
+msgid "End"
+msgstr "行尾"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
-msgid "Separator"
-msgstr "(拼音)分隔"
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
+msgid "Enter"
+msgstr "回车"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
+msgid "Home"
+msgstr "行首"
 
 # unknown
 msgid "KeyTheme"
@@ -81,3 +53,31 @@ msgstr "按键主题"
 #: /home/yuyichao/programming/fcitx-keytheme/build/po/tmp/fcitx-keytheme.conf.in.h:2
 msgid "Keytheme For Fcitx"
 msgstr "Fcitx的按键主题"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
+msgid "Left"
+msgstr "向左"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
+msgid "Period"
+msgstr "句号"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+msgid "Reload"
+msgstr "重载配置"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
+msgid "Right"
+msgstr "向右"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
+msgid "Semicolon"
+msgstr "分号"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
+msgid "Separator"
+msgstr "(拼音)分隔"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
+msgid "Space"
+msgstr "空格"
