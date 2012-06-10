@@ -42,6 +42,7 @@
 CONFIG_DESC_DEFINE(GetFcitxKeyThemeConfigDesc, "fcitx-keytheme.desc")
 static void *FcitxKeyThemeCreate(FcitxInstance *instance);
 static void FcitxKeyThemeDestroy(void *arg);
+static void FcitxKeyThemeReloadConfig(void* arg);
 
 FCITX_EXPORT_API
 const FcitxModule module = {
@@ -49,14 +50,11 @@ const FcitxModule module = {
     .Destroy = FcitxKeyThemeDestroy,
     .SetFD = NULL,
     .ProcessEvent = NULL,
-    .ReloadConfig = NULL
+    .ReloadConfig = FcitxKeyThemeReloadConfig
 };
+
 FCITX_EXPORT_API
 const int ABI_VERSION = FCITX_ABI_VERSION;
-
-#define eprintf(format, args...)                        \
-    fprintf(stderr, "\e[35m\e[1m"format"\e[0m", ##args)
-#define __pfunc__() eprintf("%s\n", __func__)
 
 #define HOTKEY_ITEM(keyname)                                            \
     {FCITX_##keyname, KEYTHEME_KEY_##keyname, {{NULL, 0, 0}, {NULL, 0, 0}}}
@@ -154,16 +152,15 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     HotkeyItem *hotkey_item;
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
-    __pfunc__();
     bindtextdomain("fcitx-keytheme", LOCALEDIR);
     if (!config_desc)
         return NULL;
+
     for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
         hotkey_item = HotkeyList + i;
         hotkey_item->origkey[0] = hotkey_item->hotkey[0];
         hotkey_item->origkey[1] = hotkey_item->hotkey[1];
     }
-
 
     if (!LoadKeyThemeConfig(&theme->config)) {
         free(theme);
@@ -176,4 +173,12 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
 static void
 FcitxKeyThemeDestroy(void *arg)
 {
+    free(arg);
+}
+
+static void
+FcitxKeyThemeReloadConfig(void* arg) {
+    FcitxKeyTheme* theme = (FcitxKeyTheme*)arg;
+    LoadKeyThemeConfig(&theme->config);
+    ApplyKeyThemeConfig(&theme->config);
 }
