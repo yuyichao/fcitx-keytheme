@@ -58,12 +58,15 @@ const int ABI_VERSION = FCITX_ABI_VERSION;
     fprintf(stderr, "\e[35m\e[1m"format"\e[0m", ##args)
 #define __pfunc__() eprintf("%s\n", __func__)
 
-#define HOTKEY_ITEM(keyname)\
-    {FCITX_##keyname, KEYTHEME_KEY_##keyname}
+#define HOTKEY_ITEM(keyname)                                            \
+    {FCITX_##keyname, KEYTHEME_KEY_##keyname, {{NULL, 0, 0}, {NULL, 0, 0}}}
+#define HOTKEY_ITEM_FULL(keyname, confname)                             \
+    {FCITX_##keyname, KEYTHEME_KEY_##confname, {{NULL, 0, 0}, {NULL, 0, 0}}}
 
 typedef struct {
     FcitxHotkey *hotkey;
     int index;
+    FcitxHotkey origkey[2];
 } HotkeyItem;
 HotkeyItem HotkeyList[] = {
     HOTKEY_ITEM(DELETE),
@@ -78,7 +81,7 @@ HotkeyItem HotkeyList[] = {
     HOTKEY_ITEM(SPACE),
     HOTKEY_ITEM(COMMA),
     HOTKEY_ITEM(PERIOD),
-    {FCITX_CTRL_5, KEYTHEME_KEY_RELOAD},
+    HOTKEY_ITEM_FULL(CTRL_5, RELOAD),
     HOTKEY_ITEM(SEPARATOR),
 };
 
@@ -95,9 +98,13 @@ ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
         tmpkey = fc->hotkey_list[hotkey_item->index];
         if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
             hotkey_item->hotkey[1] = tmpkey[0];
+        } else {
+            hotkey_item->hotkey[1] = hotkey_item->origkey[1];
         }
         if (tmpkey[1].sym != 0 && tmpkey[1].state != 0) {
             hotkey_item->hotkey[0] = tmpkey[1];
+        } else {
+            hotkey_item->hotkey[0] = hotkey_item->origkey[0];
         }
     }
 }
@@ -143,15 +150,20 @@ LoadKeyThemeConfig(FcitxKeyThemeConfig* fs)
 static void*
 FcitxKeyThemeCreate(FcitxInstance *instance)
 {
-    /* FcitxGlobalConfig* config = FcitxInstanceGetGlobalConfig(instance); */
-    /* FcitxInputState *input = FcitxInstanceGetInputState(instance); */
+    int i;
+    HotkeyItem *hotkey_item;
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
-    if (!config_desc)
-        return NULL;
-
     __pfunc__();
     bindtextdomain("fcitx-keytheme", LOCALEDIR);
+    if (!config_desc)
+        return NULL;
+    for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
+        hotkey_item = HotkeyList + i;
+        hotkey_item->origkey[0] = hotkey_item->hotkey[0];
+        hotkey_item->origkey[1] = hotkey_item->hotkey[1];
+    }
+
 
     if (!LoadKeyThemeConfig(&theme->config)) {
         free(theme);
