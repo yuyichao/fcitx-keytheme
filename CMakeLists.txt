@@ -1,13 +1,11 @@
 cmake_minimum_required (VERSION 2.6)
 
-project(fcitx-sayura)
+project(fcitx-keytheme)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-# FIND_PACKAGE(Gettext REQUIRED)
 find_package(Fcitx REQUIRED)
 find_package(Gettext REQUIRED)
-find_package(Libiconv REQUIRED)
 
 # uninstall target
 configure_file(
@@ -22,13 +20,6 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisib
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
 set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_MODULE_LINKER_FLAGS}")
-
-option(ENABLE_SAYURA_DEBUG "Debug output for develop" OFF)
-
-if(ENABLE_SAYURA_DEBUG)
-  set(CMAKE_C_FLAGS "-DFCITX_SAYURA_DEBUG ${CMAKE_C_FLAGS}")
-  set(CMAKE_CXX_FLAGS "-DFCITX_SAYURA_DEBUG ${CMAKE_CXX_FLAGS}")
-endif(ENABLE_SAYURA_DEBUG)
 
 if(NOT DEFINED LIB_INSTALL_DIR)
   set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
