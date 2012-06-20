@@ -73,7 +73,7 @@ ApplyRedirectKeyConfig(FcitxKeyThemeConfig* fc)
     FcitxHotkey *tmpkey;
     for (i = 0;HotkeyList[i].index >= 0;i++) {
         item = HotkeyList + i;
-        tmpkey = fc->hotkey_list[item->index];
+        tmpkey = fc->redirect_list[item->index];
         if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
             item->hotkey[1] = tmpkey[0];
         } else {

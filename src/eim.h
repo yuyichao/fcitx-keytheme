@@ -51,7 +51,7 @@ typedef struct _FcitxKeyThemeConfig {
     FcitxHotkey goto_first[2];
     FcitxHotkey goto_last[2];
     boolean single_forward;
-    FcitxHotkey hotkey_list[_KEYTHEME_KEY_LAST][2];
+    FcitxHotkey redirect_list[_KEYTHEME_KEY_LAST][2];
 } FcitxKeyThemeConfig;
 
 typedef struct _FcitxKeyTheme {
