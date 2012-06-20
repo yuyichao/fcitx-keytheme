@@ -19,6 +19,7 @@
  ***************************************************************************/
 #include <fcitx/keys.h>
 #include "eim.h"
+#include "keytheme.h"
 #include "config.h"
 
 #define HOTKEY_ITEM(keyname)                                            \
@@ -28,7 +29,13 @@
 #define HOTKEY_ITEM_LAST \
     {NULL, -1, {{NULL, 0, 0}, {NULL, 0, 0}}}
 
-KeyThemeItem HotkeyList[] = {
+typedef struct {
+    FcitxHotkey *hotkey;
+    int index;
+    FcitxHotkey origkey[2];
+} KeyThemeItem;
+
+static KeyThemeItem HotkeyList[] = {
     HOTKEY_ITEM(DELETE),
     HOTKEY_ITEM(BACKSPACE),
     HOTKEY_ITEM(HOME),
@@ -46,3 +53,36 @@ KeyThemeItem HotkeyList[] = {
     HOTKEY_ITEM_LAST
 };
 
+void
+KeyThemeInit()
+{
+    int i;
+    KeyThemeItem *hotkey_item;
+    for (i = 0;HotkeyList[i].index >= 0;i++) {
+        hotkey_item = HotkeyList + i;
+        hotkey_item->origkey[0] = hotkey_item->hotkey[0];
+        hotkey_item->origkey[1] = hotkey_item->hotkey[1];
+    }
+}
+
+void
+ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
+{
+    int i;
+    KeyThemeItem *hotkey_item;
+    FcitxHotkey *tmpkey;
+    for (i = 0;HotkeyList[i].index >= 0;i++) {
+        hotkey_item = HotkeyList + i;
+        tmpkey = fc->hotkey_list[hotkey_item->index];
+        if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
+            hotkey_item->hotkey[1] = tmpkey[0];
+        } else {
+            hotkey_item->hotkey[1] = hotkey_item->origkey[1];
+        }
+        if (tmpkey[1].sym != 0 && tmpkey[1].state != 0) {
+            hotkey_item->hotkey[0] = tmpkey[1];
+        } else {
+            hotkey_item->hotkey[0] = hotkey_item->origkey[0];
+        }
+    }
+}

@@ -39,6 +39,7 @@
 
 #include "eim.h"
 #include "config.h"
+#include "keytheme.h"
 
 CONFIG_DESC_DEFINE(GetFcitxKeyThemeConfigDesc, "fcitx-keytheme.desc")
 static void *FcitxKeyThemeCreate(FcitxInstance *instance);
@@ -61,28 +62,6 @@ FCITX_EXPORT_API
 const int ABI_VERSION = FCITX_ABI_VERSION;
 
 typedef FcitxHotkey DoubleHotkey[2];
-
-static void
-ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
-{
-    int i;
-    KeyThemeItem *hotkey_item;
-    FcitxHotkey *tmpkey;
-    for (i = 0;HotkeyList[i].index >= 0;i++) {
-        hotkey_item = HotkeyList + i;
-        tmpkey = fc->hotkey_list[hotkey_item->index];
-        if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
-            hotkey_item->hotkey[1] = tmpkey[0];
-        } else {
-            hotkey_item->hotkey[1] = hotkey_item->origkey[1];
-        }
-        if (tmpkey[1].sym != 0 && tmpkey[1].state != 0) {
-            hotkey_item->hotkey[0] = tmpkey[1];
-        } else {
-            hotkey_item->hotkey[0] = hotkey_item->origkey[0];
-        }
-    }
-}
 
 static void
 SaveKeyThemeConfig(FcitxKeyThemeConfig* fc)
@@ -125,8 +104,6 @@ LoadKeyThemeConfig(FcitxKeyThemeConfig* fs)
 static void*
 FcitxKeyThemeCreate(FcitxInstance *instance)
 {
-    int i;
-    KeyThemeItem *hotkey_item;
     FcitxKeyFilterHook key_hook;
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
@@ -135,11 +112,7 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     if (!config_desc)
         return NULL;
 
-    for (i = 0;HotkeyList[i].index >= 0;i++) {
-        hotkey_item = HotkeyList + i;
-        hotkey_item->origkey[0] = hotkey_item->hotkey[0];
-        hotkey_item->origkey[1] = hotkey_item->hotkey[1];
-    }
+    KeyThemeInit();
 
     if (!LoadKeyThemeConfig(&theme->config)) {
         free(theme);

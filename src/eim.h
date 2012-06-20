@@ -23,9 +23,26 @@
 
 #include <fcitx/ime.h>
 #include <fcitx/instance.h>
-#include "keytheme.h"
 
 #define _(x) dgettext("fcitx-theme", x)
+
+enum {
+    KEYTHEME_KEY_DELETE,
+    KEYTHEME_KEY_BACKSPACE,
+    KEYTHEME_KEY_HOME,
+    KEYTHEME_KEY_END,
+    KEYTHEME_KEY_RIGHT,
+    KEYTHEME_KEY_LEFT,
+    KEYTHEME_KEY_ESCAPE,
+    KEYTHEME_KEY_ENTER,
+    KEYTHEME_KEY_SEMICOLON,
+    KEYTHEME_KEY_SPACE,
+    KEYTHEME_KEY_COMMA,
+    KEYTHEME_KEY_PERIOD,
+    KEYTHEME_KEY_RELOAD,
+    KEYTHEME_KEY_SEPARATOR,
+    _KEYTHEME_KEY_LAST
+};
 
 typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
