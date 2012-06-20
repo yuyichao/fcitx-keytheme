@@ -31,8 +31,10 @@
 #include <fcitx-utils/utf8.h>
 #include <fcitx/instance.h>
 #include <fcitx/context.h>
+#include <fcitx/candidate.h>
 #include <fcitx/module.h>
 #include <fcitx/keys.h>
+#include <fcitx/hook.h>
 #include <fcitx/ui.h>
 #include <libintl.h>
 
@@ -42,7 +44,10 @@
 CONFIG_DESC_DEFINE(GetFcitxKeyThemeConfigDesc, "fcitx-keytheme.desc")
 static void *FcitxKeyThemeCreate(FcitxInstance *instance);
 static void FcitxKeyThemeDestroy(void *arg);
-static void FcitxKeyThemeReloadConfig(void* arg);
+static void FcitxKeyThemeReloadConfig(void *arg);
+static boolean FcitxKeyThemePreHook(void *arg, FcitxKeySym sym,
+                                    unsigned int state,
+                                    INPUT_RETURN_VALUE *retval);
 
 FCITX_EXPORT_API
 const FcitxModule module = {
@@ -66,7 +71,7 @@ typedef struct {
     int index;
     FcitxHotkey origkey[2];
 } HotkeyItem;
-HotkeyItem HotkeyList[] = {
+static HotkeyItem HotkeyList[] = {
     HOTKEY_ITEM(DELETE),
     HOTKEY_ITEM(BACKSPACE),
     HOTKEY_ITEM(HOME),
@@ -150,8 +155,10 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
 {
     int i;
     HotkeyItem *hotkey_item;
+    FcitxKeyFilterHook key_hook;
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
+    theme->owner = instance;
     bindtextdomain("fcitx-keytheme", LOCALEDIR);
     if (!config_desc)
         return NULL;
@@ -167,9 +174,66 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
         return NULL;
     }
     ApplyKeyThemeConfig(&theme->config);
+
+    key_hook.arg = theme;
+    key_hook.func = FcitxKeyThemePreHook;
+    FcitxInstanceRegisterPreInputFilter(instance, key_hook);
+
     return theme;
 }
 
+static boolean KeyThemeSelectFirst(FcitxKeyTheme *theme,
+                                   INPUT_RETURN_VALUE *retval)
+{
+    FcitxInputState *input_state;
+    FcitxCandidateWordList *word_list;
+    input_state = FcitxInstanceGetInputState(theme->owner);
+    if (!input_state)
+        return false;
+    word_list = FcitxInputStateGetCandidateList(input_state);
+    if (!word_list)
+        return false;
+    if (FcitxCandidateWordGetListSize(word_list) <= 0)
+        return false;
+    /* First word? Maybe First word on current page is better.. */
+    *retval = FcitxCandidateWordChooseByIndex(word_list, 0);
+    return true;
+}
+
+static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
+                                  INPUT_RETURN_VALUE *retval)
+{
+    FcitxInputState *input_state;
+    FcitxCandidateWordList *word_list;
+    input_state = FcitxInstanceGetInputState(theme->owner);
+    if (!input_state)
+        return false;
+    word_list = FcitxInputStateGetCandidateList(input_state);
+    if (!word_list)
+        return false;
+    if (FcitxCandidateWordGetListSize(word_list) <= 0)
+        return false;
+    return false;
+}
+
+static boolean FcitxKeyThemePreHook(void *arg, FcitxKeySym sym,
+                                    unsigned int state,
+                                    INPUT_RETURN_VALUE *retval)
+{
+    FcitxKeyTheme *theme = (FcitxKeyTheme*)arg;
+    if (FcitxHotkeyIsHotKey(sym, state, theme->config.sel_first)) {
+        if (KeyThemeSelectFirst(theme, retval)) {
+            return true;
+        }
+        return false;
+    } else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_single)) {
+        if (KeyThemeGotoSingle(theme, retval)) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
 static void
 FcitxKeyThemeDestroy(void *arg)
 {

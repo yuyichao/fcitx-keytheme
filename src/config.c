@@ -39,4 +39,6 @@ CONFIG_BINDING_REGISTER("KeyTheme", "Period", hotkey_list[KEYTHEME_KEY_PERIOD])
 CONFIG_BINDING_REGISTER("KeyTheme", "Reload", hotkey_list[KEYTHEME_KEY_RELOAD])
 CONFIG_BINDING_REGISTER("KeyTheme", "Separator",
                         hotkey_list[KEYTHEME_KEY_SEPARATOR])
+CONFIG_BINDING_REGISTER("Shortcut", "SelectFirst", sel_first)
+CONFIG_BINDING_REGISTER("Shortcut", "GoToSingleWord", goto_single)
 CONFIG_BINDING_END()

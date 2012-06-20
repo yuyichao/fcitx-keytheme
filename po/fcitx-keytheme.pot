@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-11 00:21+0800\n"
+"POT-Creation-Date: 2012-06-20 13:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,20 @@ msgstr ""
 msgid "Separator"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
+msgid "Select the first candidate word"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+msgid "Going to the page of the first single character candidate word"
+msgstr ""
+
 # unknown
 msgid "KeyTheme"
+msgstr ""
+
+# unknown
+msgid "Shortcut"
 msgstr ""
 
 #: /home/yuyichao/programming/fcitx-keytheme/build/po/tmp/fcitx-keytheme.conf.in.h:1

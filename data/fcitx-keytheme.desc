@@ -63,5 +63,15 @@ Type=Hotkey
 DefaultValue=
 Description=Separator
 
+[Shortcut/SelectFirst]
+Type=Hotkey
+DefaultValue=
+Description=Select the first candidate word
+
+[Shortcut/GoToSingleWord]
+Type=Hotkey
+DefaultValue=
+Description=Going to the page of the first single character candidate word
+
 [DescriptionFile]
 LocaleDomain=fcitx-keytheme

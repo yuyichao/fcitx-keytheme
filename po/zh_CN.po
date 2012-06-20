@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-11 00:21+0800\n"
+"POT-Creation-Date: 2012-06-20 13:47+0800\n"
 "PO-Revision-Date: 2012-06-11 00:24+0800\n"
 "Last-Translator: Yichao Yu <yyc1992@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -37,6 +37,10 @@ msgstr "行尾"
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
 msgid "Enter"
 msgstr "回车"
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+msgid "Going to the page of the first single character candidate word"
+msgstr "切换到含有单字符的候选页"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
 msgid "Home"
@@ -70,6 +74,10 @@ msgstr "重载配置"
 msgid "Right"
 msgstr "向右"
 
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
+msgid "Select the first candidate word"
+msgstr "选择第一个候选字"
+
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
 msgid "Semicolon"
 msgstr "分号"
@@ -77,6 +85,10 @@ msgstr "分号"
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
 msgid "Separator"
 msgstr "(拼音)分隔"
+
+# unknown
+msgid "Shortcut"
+msgstr "快捷键"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
 msgid "Space"
