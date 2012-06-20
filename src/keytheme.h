@@ -18,33 +18,36 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#ifndef EIM_H
-#define EIM_H
+#ifndef KEYTHEME_H
+#define KEYTHEME_H
 
 #include <fcitx/ime.h>
 #include <fcitx/instance.h>
-#include "keytheme.h"
 
 #define _(x) dgettext("fcitx-theme", x)
 
-typedef struct _FcitxKeyThemeConfig {
-    FcitxGenericConfig config;
-    FcitxHotkey sel_first[2];
-    FcitxHotkey goto_single[2];
-    FcitxHotkey goto_first[2];
-    FcitxHotkey goto_last[2];
-    boolean single_forward;
-    FcitxHotkey hotkey_list[_KEYTHEME_KEY_LAST][2];
-} FcitxKeyThemeConfig;
+enum {
+    KEYTHEME_KEY_DELETE,
+    KEYTHEME_KEY_BACKSPACE,
+    KEYTHEME_KEY_HOME,
+    KEYTHEME_KEY_END,
+    KEYTHEME_KEY_RIGHT,
+    KEYTHEME_KEY_LEFT,
+    KEYTHEME_KEY_ESCAPE,
+    KEYTHEME_KEY_ENTER,
+    KEYTHEME_KEY_SEMICOLON,
+    KEYTHEME_KEY_SPACE,
+    KEYTHEME_KEY_COMMA,
+    KEYTHEME_KEY_PERIOD,
+    KEYTHEME_KEY_RELOAD,
+    KEYTHEME_KEY_SEPARATOR,
+    _KEYTHEME_KEY_LAST
+};
 
-typedef struct _FcitxKeyTheme {
-    FcitxKeyThemeConfig config;
-    FcitxInstance* owner;
-} FcitxKeyTheme;
-
-typedef boolean (*KTShortcutAction)(FcitxKeyTheme *theme,
-                                    INPUT_RETURN_VALUE *retval);
-
-CONFIG_BINDING_DECLARE(FcitxKeyThemeConfig);
+typedef struct {
+    FcitxHotkey *hotkey;
+    int index;
+    FcitxHotkey origkey[2];
+} KeyThemeItem;
 
 #endif

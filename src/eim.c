@@ -68,7 +68,7 @@ const int ABI_VERSION = FCITX_ABI_VERSION;
 #define HOTKEY_ITEM_LAST \
     {NULL, -1, {{NULL, 0, 0}, {NULL, 0, 0}}}
 
-static HotkeyItem HotkeyList[] = {
+static KeyThemeItem HotkeyList[] = {
     HOTKEY_ITEM(DELETE),
     HOTKEY_ITEM(BACKSPACE),
     HOTKEY_ITEM(HOME),
@@ -90,7 +90,7 @@ static void
 ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
 {
     int i;
-    HotkeyItem *hotkey_item;
+    KeyThemeItem *hotkey_item;
     FcitxHotkey *tmpkey;
     for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
         hotkey_item = HotkeyList + i;
@@ -150,7 +150,7 @@ static void*
 FcitxKeyThemeCreate(FcitxInstance *instance)
 {
     int i;
-    HotkeyItem *hotkey_item;
+    KeyThemeItem *hotkey_item;
     FcitxKeyFilterHook key_hook;
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
