@@ -27,15 +27,15 @@ typedef boolean (*KTShortcutAction)(FcitxKeyTheme *theme,
                                     INPUT_RETURN_VALUE *retval);
 
 static boolean
-FcitxKeyThemePreHook(void *arg, FcitxKeySym sym, unsigned int state,
+KT_ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
                      INPUT_RETURN_VALUE *retval);
 
 void ShortcutInit(FcitxKeyTheme *theme)
 {
-    FcitxKeyFilterHook key_hook;
-
-    key_hook.arg = theme;
-    key_hook.func = FcitxKeyThemePreHook;
+    FcitxKeyFilterHook key_hook = {
+        .arg = theme,
+        .func = KT_ShortcutPreHook,
+    };
     FcitxInstanceRegisterPreInputFilter(theme->owner, key_hook);
 }
 
@@ -52,36 +52,26 @@ static boolean KeyThemeSelectFirst(FcitxKeyTheme *theme,
         return false;
     if (FcitxCandidateWordGetListSize(word_list) <= 0)
         return false;
-    /* .... this IS the first word on the page ....
-     * So what if I want to really get the first word then?
-     * go to first page and select?.....
-     */
     *retval = FcitxCandidateWordChooseByIndex(word_list, 0);
     return true;
 }
 
-static int KeyThemeFindSingle(FcitxCandidateWordList *word_list)
+static int KT_ShortcutFindSingle(FcitxCandidateWordList *word_list)
 {
     FcitxCandidateWord *word;
     int i = 0;
-    for (word = FcitxCandidateWordGetFirst(word_list);
-         word;
-         word = FcitxCandidateWordGetNext(word_list, word), i++) {
-             size_t len = word->strWord ? fcitx_utf8_strlen(word->strWord) : 0;
-             if (len == 1)
-                 return i;
-         }
+    for (i = 0;(word = FcitxCandidateWordGetByTotalIndex(word_list, i)); i++) {
+        if (fcitx_utf8_strlen(word->strWord) == 1)
+            return i;
+    }
     return -1;
 }
 
 static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
                                   INPUT_RETURN_VALUE *retval)
 {
-    int i;
     int single_index;
-    int page_size;
-    int page_index;
-    int cur_page;
+    int cur_index;
     FcitxInputState *input_state;
     FcitxCandidateWordList *word_list;
     input_state = FcitxInstanceGetInputState(theme->owner);
@@ -92,32 +82,18 @@ static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
         return false;
     if (FcitxCandidateWordGetListSize(word_list) <= 0)
         return false;
-    single_index = KeyThemeFindSingle(word_list);
+    single_index = KT_ShortcutFindSingle(word_list);
     if (single_index < 0)
         return false;
-    page_size = FcitxCandidateWordGetPageSize(word_list);
-    if (page_size <= 0)
+    cur_index = FcitxCandidateWordGetCurrentIndex(word_list);
+    if (cur_index > single_index && theme->config.single_forward)
         return false;
-    page_index = single_index / page_size;
-    cur_page = FcitxCandidateWordGetCurrentPage(word_list);
-    if (cur_page < 0)
-        return false;
-    if (cur_page > page_index) {
-        if (theme->config.single_forward)
-            return false;
-        for (i = cur_page - page_index;i > 0;i--) {
-            FcitxCandidateWordGoPrevPage(word_list);
-        }
-    } else {
-        for (i = page_index - cur_page;i > 0;i--) {
-            FcitxCandidateWordGoNextPage(word_list);
-        }
-    }
+    FcitxCandidateWordSetFocus(word_list, single_index);
     *retval = IRV_FLAG_UPDATE_INPUT_WINDOW;
     return true;
 }
 
-static boolean FcitxKeyThemePreHook(void *arg, FcitxKeySym sym,
+static boolean KT_ShortcutPreHook(void *arg, FcitxKeySym sym,
                                     unsigned int state,
                                     INPUT_RETURN_VALUE *retval)
 {
