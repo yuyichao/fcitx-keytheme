@@ -40,11 +40,11 @@ msgstr "回车"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
 msgid "Going to the first page"
-msgstr ""
+msgstr "切换到第一页"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
 msgid "Going to the last page"
-msgstr ""
+msgstr "切换到最后一页"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
 msgid "Going to the page of the first single character candidate word"
@@ -68,7 +68,7 @@ msgstr "向左"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
 msgid "Only go forward when looking for single character page"
-msgstr ""
+msgstr "仅向前寻找单字的候选词"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
 msgid "Period"
@@ -76,7 +76,7 @@ msgstr "句号"
 
 # unknown
 msgid "Redirect"
-msgstr ""
+msgstr "重定向"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
 msgid "Reload"
