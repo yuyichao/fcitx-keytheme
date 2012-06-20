@@ -50,6 +50,7 @@ typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
     FcitxHotkey sel_first[2];
     FcitxHotkey goto_single[2];
+    boolean single_forward;
     FcitxHotkey hotkey_list[_KEYTHEME_KEY_LAST][2];
 } FcitxKeyThemeConfig;
 

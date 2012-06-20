@@ -246,6 +246,8 @@ static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
     if (cur_page < 0)
         return false;
     if (cur_page > page_index) {
+        if (theme->config.single_forward)
+            return false;
         for (i = cur_page - page_index;i > 0;i--) {
             FcitxCandidateWordGoPrevPage(word_list);
         }

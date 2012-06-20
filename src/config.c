@@ -24,6 +24,7 @@
 CONFIG_BINDING_BEGIN(FcitxKeyThemeConfig)
 CONFIG_BINDING_REGISTER("Shortcut", "SelectFirst", sel_first)
 CONFIG_BINDING_REGISTER("Shortcut", "GoToSingleWord", goto_single)
+CONFIG_BINDING_REGISTER("Shortcut", "SingleOnlyForward", single_forward)
 CONFIG_BINDING_REGISTER("KeyTheme", "Delete", hotkey_list[KEYTHEME_KEY_DELETE])
 CONFIG_BINDING_REGISTER("KeyTheme", "Backspace",
                         hotkey_list[KEYTHEME_KEY_BACKSPACE])

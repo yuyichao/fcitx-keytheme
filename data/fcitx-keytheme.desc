@@ -8,6 +8,11 @@ Type=Hotkey
 DefaultValue=
 Description=Going to the page of the first single character candidate word
 
+[Shortcut/SingleOnlyForward]
+Type=Boolean
+DefaultValue=True
+Description=Only go forward when looking for single character page
+
 [KeyTheme/Delete]
 Type=Hotkey
 DefaultValue=
