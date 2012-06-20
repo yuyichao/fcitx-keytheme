@@ -22,10 +22,14 @@
 
 /* USE fcitx provided macro to bind config and variable */
 CONFIG_BINDING_BEGIN(FcitxKeyThemeConfig)
-CONFIG_BINDING_REGISTER("Shortcut", "SelectFirst", sel_first)
-CONFIG_BINDING_REGISTER("Shortcut", "GoToSingleWord", goto_single)
-CONFIG_BINDING_REGISTER("Shortcut", "GoToFirstPage", goto_first)
-CONFIG_BINDING_REGISTER("Shortcut", "GoToLastPage", goto_last)
+CONFIG_BINDING_REGISTER("Shortcut", "SelectFirst",
+                        shortcut_list[SHORTCUT_KEY_SEL_FIRST])
+CONFIG_BINDING_REGISTER("Shortcut", "GoToSingleWord",
+                        shortcut_list[SHORTCUT_KEY_GO_SINGLE])
+CONFIG_BINDING_REGISTER("Shortcut", "GoToFirstPage",
+                        shortcut_list[SHORTCUT_KEY_GO_FIRST])
+CONFIG_BINDING_REGISTER("Shortcut", "GoToLastPage",
+                        shortcut_list[SHORTCUT_KEY_GO_LAST])
 CONFIG_BINDING_REGISTER("Shortcut", "SingleOnlyForward", single_forward)
 CONFIG_BINDING_REGISTER("Redirect", "Delete",
                         redirect_list[KEYTHEME_KEY_DELETE])

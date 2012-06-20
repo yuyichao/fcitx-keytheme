@@ -53,7 +53,7 @@ static RedirectItem HotkeyList[] = {
 };
 
 void
-RedirectInit(FcitxKeyTheme *theme)
+RedirectKeyInit(FcitxKeyTheme *theme)
 {
     int i;
     RedirectItem *item;

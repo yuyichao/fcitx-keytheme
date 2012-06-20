@@ -23,24 +23,34 @@
 #include "shortcut.h"
 #include "config.h"
 
-typedef boolean (*KTShortcutAction)(FcitxKeyTheme *theme,
+typedef boolean (*ShortcutAction)(FcitxKeyTheme *theme,
                                     INPUT_RETURN_VALUE *retval);
+typedef struct {
+    int index;
+    ShortcutAction action_func;
+} ShortcutItem;
+
+#define SHORTCUT_ITEM(action, action_func) \
+    {SHORTCUT_KEY_##action, Shortcut##action_func}
+#define SHORTCUT_ITEM_LAST \
+    {-1, NULL}
 
 static boolean
-KT_ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
-                     INPUT_RETURN_VALUE *retval);
+ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
+                   INPUT_RETURN_VALUE *retval);
 
-void ShortcutInit(FcitxKeyTheme *theme)
+void
+ShortcutInit(FcitxKeyTheme *theme)
 {
     FcitxKeyFilterHook key_hook = {
         .arg = theme,
-        .func = KT_ShortcutPreHook,
+        .func = ShortcutPreHook,
     };
     FcitxInstanceRegisterPreInputFilter(theme->owner, key_hook);
 }
 
-static boolean KeyThemeSelectFirst(FcitxKeyTheme *theme,
-                                   INPUT_RETURN_VALUE *retval)
+static boolean
+ShortcutSelectFirst(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
     FcitxInputState *input_state;
     FcitxCandidateWordList *word_list;
@@ -56,7 +66,8 @@ static boolean KeyThemeSelectFirst(FcitxKeyTheme *theme,
     return true;
 }
 
-static int KT_ShortcutFindSingle(FcitxCandidateWordList *word_list)
+static int
+ShortcutFindSingle(FcitxCandidateWordList *word_list)
 {
     FcitxCandidateWord *word;
     int i = 0;
@@ -67,8 +78,8 @@ static int KT_ShortcutFindSingle(FcitxCandidateWordList *word_list)
     return -1;
 }
 
-static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
-                                  INPUT_RETURN_VALUE *retval)
+static boolean
+ShortcutGotoSingle(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
     int single_index;
     int cur_index;
@@ -82,7 +93,7 @@ static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
         return false;
     if (FcitxCandidateWordGetListSize(word_list) <= 0)
         return false;
-    single_index = KT_ShortcutFindSingle(word_list);
+    single_index = ShortcutFindSingle(word_list);
     if (single_index < 0)
         return false;
     cur_index = FcitxCandidateWordGetCurrentIndex(word_list);
@@ -93,31 +104,39 @@ static boolean KeyThemeGotoSingle(FcitxKeyTheme *theme,
     return true;
 }
 
-static boolean KT_ShortcutPreHook(void *arg, FcitxKeySym sym,
-                                    unsigned int state,
-                                    INPUT_RETURN_VALUE *retval)
+static boolean
+ShortcutGotoFirst(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
+    return false;
+}
+
+static boolean
+ShortcutGotoLast(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
+{
+    return false;
+}
+
+static ShortcutItem ShortcutList[] = {
+    SHORTCUT_ITEM(SEL_FIRST, SelectFirst),
+    SHORTCUT_ITEM(GO_SINGLE, GotoSingle),
+    SHORTCUT_ITEM(GO_FIRST, GotoFirst),
+    SHORTCUT_ITEM(GO_LAST, GotoLast),
+    SHORTCUT_ITEM_LAST
+};
+
+static boolean
+ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
+                   INPUT_RETURN_VALUE *retval)
+{
+    int i;
     FcitxKeyTheme *theme = (FcitxKeyTheme*)arg;
-    if (FcitxHotkeyIsHotKey(sym, state, theme->config.sel_first)) {
-        if (KeyThemeSelectFirst(theme, retval)) {
-            return true;
+    for (i = 0;ShortcutList[i].action_func;i++) {
+        if (FcitxHotkeyIsHotKey(
+            sym, state, theme->config.shortcut_list[ShortcutList[i].index])) {
+            if (ShortcutList[i].action_func(theme, retval))
+                return true;
+            return false;
         }
-        return false;
-    } else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_single)) {
-        if (KeyThemeGotoSingle(theme, retval)) {
-            return true;
-        }
-        return false;
-    }/* else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_first)) {
-        if (KeyThemeGotoSingle(theme, retval)) {
-            return true;
-        }
-        return false;
-    } else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_last)) {
-        if (KeyThemeGotoSingle(theme, retval)) {
-            return true;
-        }
-        return false;
-    } */
+    }
     return false;
 }

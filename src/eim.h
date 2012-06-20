@@ -54,10 +54,6 @@ enum {
 
 typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
-    FcitxHotkey sel_first[2];
-    FcitxHotkey goto_single[2];
-    FcitxHotkey goto_first[2];
-    FcitxHotkey goto_last[2];
     boolean single_forward;
     FcitxHotkey redirect_list[_KEYTHEME_KEY_LAST][2];
     FcitxHotkey shortcut_list[_SHORTCUT_KEY_LAST][2];

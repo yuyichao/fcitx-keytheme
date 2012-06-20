@@ -18,8 +18,8 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#ifndef KEYTHEME_H
-#define KEYTHEME_H
+#ifndef REDIRECT_H
+#define REDIRECT_H
 
 #include "eim.h"
 
