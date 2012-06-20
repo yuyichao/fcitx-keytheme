@@ -18,7 +18,6 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 #include <fcitx/keys.h>
-#include "eim.h"
 #include "redirect.h"
 #include "config.h"
 
@@ -54,7 +53,7 @@ static RedirectItem HotkeyList[] = {
 };
 
 void
-RedirectInit()
+RedirectInit(FcitxKeyTheme *theme)
 {
     int i;
     RedirectItem *item;

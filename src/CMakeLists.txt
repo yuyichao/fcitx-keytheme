@@ -7,6 +7,7 @@ set(fcitx_keytheme_sources
   eim.c
   config.c
   redirect.c
+  shortcut.c
   )
 
 fcitx_add_addon(fcitx-keytheme ${fcitx_keytheme_sources})

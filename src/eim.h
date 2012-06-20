@@ -44,6 +44,14 @@ enum {
     _KEYTHEME_KEY_LAST
 };
 
+enum {
+    SHORTCUT_KEY_SEL_FIRST,
+    SHORTCUT_KEY_GO_SINGLE,
+    SHORTCUT_KEY_GO_FIRST,
+    SHORTCUT_KEY_GO_LAST,
+    _SHORTCUT_KEY_LAST,
+};
+
 typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
     FcitxHotkey sel_first[2];
@@ -52,15 +60,13 @@ typedef struct _FcitxKeyThemeConfig {
     FcitxHotkey goto_last[2];
     boolean single_forward;
     FcitxHotkey redirect_list[_KEYTHEME_KEY_LAST][2];
+    FcitxHotkey shortcut_list[_SHORTCUT_KEY_LAST][2];
 } FcitxKeyThemeConfig;
 
 typedef struct _FcitxKeyTheme {
     FcitxKeyThemeConfig config;
     FcitxInstance* owner;
 } FcitxKeyTheme;
-
-typedef boolean (*KTShortcutAction)(FcitxKeyTheme *theme,
-                                    INPUT_RETURN_VALUE *retval);
 
 CONFIG_BINDING_DECLARE(FcitxKeyThemeConfig);
 
