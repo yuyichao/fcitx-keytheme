@@ -17,39 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
+#include <fcitx/keys.h>
+#include "eim.h"
+#include "config.h"
 
-#ifndef KEYTHEME_H
-#define KEYTHEME_H
+#define HOTKEY_ITEM(keyname)                                            \
+    {FCITX_##keyname, KEYTHEME_KEY_##keyname, {{NULL, 0, 0}, {NULL, 0, 0}}}
+#define HOTKEY_ITEM_FULL(keyname, confname)                             \
+    {FCITX_##keyname, KEYTHEME_KEY_##confname, {{NULL, 0, 0}, {NULL, 0, 0}}}
+#define HOTKEY_ITEM_LAST \
+    {NULL, -1, {{NULL, 0, 0}, {NULL, 0, 0}}}
 
-#include <fcitx/ime.h>
-#include <fcitx/instance.h>
-
-#define _(x) dgettext("fcitx-theme", x)
-
-enum {
-    KEYTHEME_KEY_DELETE,
-    KEYTHEME_KEY_BACKSPACE,
-    KEYTHEME_KEY_HOME,
-    KEYTHEME_KEY_END,
-    KEYTHEME_KEY_RIGHT,
-    KEYTHEME_KEY_LEFT,
-    KEYTHEME_KEY_ESCAPE,
-    KEYTHEME_KEY_ENTER,
-    KEYTHEME_KEY_SEMICOLON,
-    KEYTHEME_KEY_SPACE,
-    KEYTHEME_KEY_COMMA,
-    KEYTHEME_KEY_PERIOD,
-    KEYTHEME_KEY_RELOAD,
-    KEYTHEME_KEY_SEPARATOR,
-    _KEYTHEME_KEY_LAST
+KeyThemeItem HotkeyList[] = {
+    HOTKEY_ITEM(DELETE),
+    HOTKEY_ITEM(BACKSPACE),
+    HOTKEY_ITEM(HOME),
+    HOTKEY_ITEM(END),
+    HOTKEY_ITEM(RIGHT),
+    HOTKEY_ITEM(LEFT),
+    HOTKEY_ITEM(ESCAPE),
+    HOTKEY_ITEM(ENTER),
+    HOTKEY_ITEM(SEMICOLON),
+    HOTKEY_ITEM(SPACE),
+    HOTKEY_ITEM(COMMA),
+    HOTKEY_ITEM(PERIOD),
+    HOTKEY_ITEM_FULL(CTRL_5, RELOAD),
+    HOTKEY_ITEM(SEPARATOR),
+    HOTKEY_ITEM_LAST
 };
 
-typedef struct {
-    FcitxHotkey *hotkey;
-    int index;
-    FcitxHotkey origkey[2];
-} KeyThemeItem;
-
-extern KeyThemeItem HotkeyList[];
-
-#endif

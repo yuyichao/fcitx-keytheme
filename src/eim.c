@@ -25,7 +25,6 @@
 #include <fcitx/ime.h>
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/xdg.h>
-#include <fcitx-config/hotkey.h>
 #include <fcitx-utils/log.h>
 #include <fcitx-utils/utils.h>
 #include <fcitx-utils/utf8.h>
@@ -61,29 +60,6 @@ const FcitxModule module = {
 FCITX_EXPORT_API
 const int ABI_VERSION = FCITX_ABI_VERSION;
 
-#define HOTKEY_ITEM(keyname)                                            \
-    {FCITX_##keyname, KEYTHEME_KEY_##keyname, {{NULL, 0, 0}, {NULL, 0, 0}}}
-#define HOTKEY_ITEM_FULL(keyname, confname)                             \
-    {FCITX_##keyname, KEYTHEME_KEY_##confname, {{NULL, 0, 0}, {NULL, 0, 0}}}
-#define HOTKEY_ITEM_LAST \
-    {NULL, -1, {{NULL, 0, 0}, {NULL, 0, 0}}}
-
-static KeyThemeItem HotkeyList[] = {
-    HOTKEY_ITEM(DELETE),
-    HOTKEY_ITEM(BACKSPACE),
-    HOTKEY_ITEM(HOME),
-    HOTKEY_ITEM(END),
-    HOTKEY_ITEM(RIGHT),
-    HOTKEY_ITEM(LEFT),
-    HOTKEY_ITEM(ESCAPE),
-    HOTKEY_ITEM(ENTER),
-    HOTKEY_ITEM(SEMICOLON),
-    HOTKEY_ITEM(SPACE),
-    HOTKEY_ITEM(COMMA),
-    HOTKEY_ITEM(PERIOD),
-    HOTKEY_ITEM_FULL(CTRL_5, RELOAD),
-    HOTKEY_ITEM(SEPARATOR),
-};
 typedef FcitxHotkey DoubleHotkey[2];
 
 static void
@@ -92,7 +68,7 @@ ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc)
     int i;
     KeyThemeItem *hotkey_item;
     FcitxHotkey *tmpkey;
-    for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
+    for (i = 0;HotkeyList[i].index >= 0;i++) {
         hotkey_item = HotkeyList + i;
         tmpkey = fc->hotkey_list[hotkey_item->index];
         if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
@@ -159,7 +135,7 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     if (!config_desc)
         return NULL;
 
-    for (i = 0;i < sizeof(HotkeyList) / sizeof(HotkeyList[0]);i++) {
+    for (i = 0;HotkeyList[i].index >= 0;i++) {
         hotkey_item = HotkeyList + i;
         hotkey_item->origkey[0] = hotkey_item->hotkey[0];
         hotkey_item->origkey[1] = hotkey_item->hotkey[1];
