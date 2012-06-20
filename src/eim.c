@@ -65,12 +65,9 @@ const int ABI_VERSION = FCITX_ABI_VERSION;
     {FCITX_##keyname, KEYTHEME_KEY_##keyname, {{NULL, 0, 0}, {NULL, 0, 0}}}
 #define HOTKEY_ITEM_FULL(keyname, confname)                             \
     {FCITX_##keyname, KEYTHEME_KEY_##confname, {{NULL, 0, 0}, {NULL, 0, 0}}}
+#define HOTKEY_ITEM_LAST \
+    {NULL, -1, {{NULL, 0, 0}, {NULL, 0, 0}}}
 
-typedef struct {
-    FcitxHotkey *hotkey;
-    int index;
-    FcitxHotkey origkey[2];
-} HotkeyItem;
 static HotkeyItem HotkeyList[] = {
     HOTKEY_ITEM(DELETE),
     HOTKEY_ITEM(BACKSPACE),
@@ -87,7 +84,6 @@ static HotkeyItem HotkeyList[] = {
     HOTKEY_ITEM_FULL(CTRL_5, RELOAD),
     HOTKEY_ITEM(SEPARATOR),
 };
-
 typedef FcitxHotkey DoubleHotkey[2];
 
 static void
@@ -275,7 +271,17 @@ static boolean FcitxKeyThemePreHook(void *arg, FcitxKeySym sym,
             return true;
         }
         return false;
-    }
+    }/* else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_first)) {
+        if (KeyThemeGotoSingle(theme, retval)) {
+            return true;
+        }
+        return false;
+    } else if (FcitxHotkeyIsHotKey(sym, state, theme->config.goto_last)) {
+        if (KeyThemeGotoSingle(theme, retval)) {
+            return true;
+        }
+        return false;
+    } */
     return false;
 }
 static void

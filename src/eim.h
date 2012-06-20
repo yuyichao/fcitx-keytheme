@@ -50,6 +50,8 @@ typedef struct _FcitxKeyThemeConfig {
     FcitxGenericConfig config;
     FcitxHotkey sel_first[2];
     FcitxHotkey goto_single[2];
+    FcitxHotkey goto_first[2];
+    FcitxHotkey goto_last[2];
     boolean single_forward;
     FcitxHotkey hotkey_list[_KEYTHEME_KEY_LAST][2];
 } FcitxKeyThemeConfig;
@@ -58,6 +60,15 @@ typedef struct _FcitxKeyTheme {
     FcitxKeyThemeConfig config;
     FcitxInstance* owner;
 } FcitxKeyTheme;
+
+typedef boolean (*KTShortcutAction)(FcitxKeyTheme *theme,
+                                    INPUT_RETURN_VALUE *retval);
+
+typedef struct {
+    FcitxHotkey *hotkey;
+    int index;
+    FcitxHotkey origkey[2];
+} HotkeyItem;
 
 CONFIG_BINDING_DECLARE(FcitxKeyThemeConfig);
 

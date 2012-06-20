@@ -13,6 +13,16 @@ Type=Boolean
 DefaultValue=True
 Description=Only go forward when looking for single character page
 
+[Shortcut/GoToFirstPage]
+Type=Hotkey
+DefaultValue=
+Description=Going to the first page
+
+[Shortcut/GoToLastPage]
+Type=Hotkey
+DefaultValue=
+Description=Going to the last page
+
 [KeyTheme/Delete]
 Type=Hotkey
 DefaultValue=
