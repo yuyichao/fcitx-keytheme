@@ -21,8 +21,6 @@
 #ifndef KEYTHEME_H
 #define KEYTHEME_H
 
-#include <fcitx/ime.h>
-#include <fcitx/instance.h>
 #include "eim.h"
 
 void RedirectKeyInit();

@@ -34,7 +34,6 @@
 #include <fcitx/module.h>
 #include <fcitx/keys.h>
 #include <fcitx/hook.h>
-#include <fcitx/ui.h>
 #include <libintl.h>
 
 #include "eim.h"
