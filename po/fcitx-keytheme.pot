@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-20 13:47+0800\n"
+"POT-Creation-Date: 2012-06-20 16:12+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,67 +18,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:4
-msgid "Delete"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
-msgid "Backspace"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
-msgid "Home"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
-msgid "End"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
-msgid "Right"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
-msgid "Left"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
-msgid "Enter"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
-msgid "Semicolon"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
-msgid "Space"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:49
-msgid "Comma"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
-msgid "Period"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
-msgid "Reload"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
-msgid "Separator"
-msgstr ""
-
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
 msgid "Select the first candidate word"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
 msgid "Going to the page of the first single character candidate word"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
+msgid "Only go forward when looking for single character page"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
+msgid "Going to the first page"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
+msgid "Going to the last page"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
+msgid "Delete"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
+msgid "Backspace"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
+msgid "Home"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
+msgid "End"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:49
+msgid "Right"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
+msgid "Left"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+msgid "Enter"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
+msgid "Semicolon"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
+msgid "Space"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+msgid "Comma"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
+msgid "Period"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
+msgid "Reload"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:89
+msgid "Separator"
+msgstr ""
+
 # unknown
-msgid "KeyTheme"
+msgid "Redirect"
 msgstr ""
 
 # unknown

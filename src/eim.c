@@ -39,7 +39,7 @@
 
 #include "eim.h"
 #include "config.h"
-#include "keytheme.h"
+#include "redirect.h"
 
 CONFIG_DESC_DEFINE(GetFcitxKeyThemeConfigDesc, "fcitx-keytheme.desc")
 static void *FcitxKeyThemeCreate(FcitxInstance *instance);
@@ -112,13 +112,13 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     if (!config_desc)
         return NULL;
 
-    KeyThemeInit();
+    RedirectKeyInit();
 
     if (!LoadKeyThemeConfig(&theme->config)) {
         free(theme);
         return NULL;
     }
-    ApplyKeyThemeConfig(&theme->config);
+    ApplyRedirectKeyConfig(&theme->config);
 
     key_hook.arg = theme;
     key_hook.func = FcitxKeyThemePreHook;
@@ -243,5 +243,5 @@ static void
 FcitxKeyThemeReloadConfig(void* arg) {
     FcitxKeyTheme* theme = (FcitxKeyTheme*)arg;
     LoadKeyThemeConfig(&theme->config);
-    ApplyKeyThemeConfig(&theme->config);
+    ApplyRedirectKeyConfig(&theme->config);
 }

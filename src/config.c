@@ -27,21 +27,21 @@ CONFIG_BINDING_REGISTER("Shortcut", "GoToSingleWord", goto_single)
 CONFIG_BINDING_REGISTER("Shortcut", "GoToFirstPage", goto_first)
 CONFIG_BINDING_REGISTER("Shortcut", "GoToLastPage", goto_last)
 CONFIG_BINDING_REGISTER("Shortcut", "SingleOnlyForward", single_forward)
-CONFIG_BINDING_REGISTER("KeyTheme", "Delete", hotkey_list[KEYTHEME_KEY_DELETE])
-CONFIG_BINDING_REGISTER("KeyTheme", "Backspace",
+CONFIG_BINDING_REGISTER("Redirect", "Delete", hotkey_list[KEYTHEME_KEY_DELETE])
+CONFIG_BINDING_REGISTER("Redirect", "Backspace",
                         hotkey_list[KEYTHEME_KEY_BACKSPACE])
-CONFIG_BINDING_REGISTER("KeyTheme", "Home",
+CONFIG_BINDING_REGISTER("Redirect", "Home",
                         hotkey_list[KEYTHEME_KEY_HOME])
-CONFIG_BINDING_REGISTER("KeyTheme", "End", hotkey_list[KEYTHEME_KEY_END])
-CONFIG_BINDING_REGISTER("KeyTheme", "Right", hotkey_list[KEYTHEME_KEY_RIGHT])
-CONFIG_BINDING_REGISTER("KeyTheme", "Left", hotkey_list[KEYTHEME_KEY_LEFT])
-CONFIG_BINDING_REGISTER("KeyTheme", "Escape", hotkey_list[KEYTHEME_KEY_ESCAPE])
-CONFIG_BINDING_REGISTER("KeyTheme", "Semicolon",
+CONFIG_BINDING_REGISTER("Redirect", "End", hotkey_list[KEYTHEME_KEY_END])
+CONFIG_BINDING_REGISTER("Redirect", "Right", hotkey_list[KEYTHEME_KEY_RIGHT])
+CONFIG_BINDING_REGISTER("Redirect", "Left", hotkey_list[KEYTHEME_KEY_LEFT])
+CONFIG_BINDING_REGISTER("Redirect", "Escape", hotkey_list[KEYTHEME_KEY_ESCAPE])
+CONFIG_BINDING_REGISTER("Redirect", "Semicolon",
                         hotkey_list[KEYTHEME_KEY_SEMICOLON])
-CONFIG_BINDING_REGISTER("KeyTheme", "Space", hotkey_list[KEYTHEME_KEY_SPACE])
-CONFIG_BINDING_REGISTER("KeyTheme", "Comma", hotkey_list[KEYTHEME_KEY_COMMA])
-CONFIG_BINDING_REGISTER("KeyTheme", "Period", hotkey_list[KEYTHEME_KEY_PERIOD])
-CONFIG_BINDING_REGISTER("KeyTheme", "Reload", hotkey_list[KEYTHEME_KEY_RELOAD])
-CONFIG_BINDING_REGISTER("KeyTheme", "Separator",
+CONFIG_BINDING_REGISTER("Redirect", "Space", hotkey_list[KEYTHEME_KEY_SPACE])
+CONFIG_BINDING_REGISTER("Redirect", "Comma", hotkey_list[KEYTHEME_KEY_COMMA])
+CONFIG_BINDING_REGISTER("Redirect", "Period", hotkey_list[KEYTHEME_KEY_PERIOD])
+CONFIG_BINDING_REGISTER("Redirect", "Reload", hotkey_list[KEYTHEME_KEY_RELOAD])
+CONFIG_BINDING_REGISTER("Redirect", "Separator",
                         hotkey_list[KEYTHEME_KEY_SEPARATOR])
 CONFIG_BINDING_END()

@@ -23,67 +23,67 @@ Type=Hotkey
 DefaultValue=
 Description=Going to the last page
 
-[KeyTheme/Delete]
+[Redirect/Delete]
 Type=Hotkey
 DefaultValue=
 Description=Delete
 
-[KeyTheme/Backspace]
+[Redirect/Backspace]
 Type=Hotkey
 DefaultValue=
 Description=Backspace
 
-[KeyTheme/Home]
+[Redirect/Home]
 Type=Hotkey
 DefaultValue=
 Description=Home
 
-[KeyTheme/End]
+[Redirect/End]
 Type=Hotkey
 DefaultValue=
 Description=End
 
-[KeyTheme/Right]
+[Redirect/Right]
 Type=Hotkey
 DefaultValue=
 Description=Right
 
-[KeyTheme/Left]
+[Redirect/Left]
 Type=Hotkey
 DefaultValue=
 Description=Left
 
-[KeyTheme/Escape]
+[Redirect/Escape]
 Type=Hotkey
 DefaultValue=
 Description=Enter
 
-[KeyTheme/Semicolon]
+[Redirect/Semicolon]
 Type=Hotkey
 DefaultValue=
 Description=Semicolon
 
-[KeyTheme/Space]
+[Redirect/Space]
 Type=Hotkey
 DefaultValue=
 Description=Space
 
-[KeyTheme/Comma]
+[Redirect/Comma]
 Type=Hotkey
 DefaultValue=
 Description=Comma
 
-[KeyTheme/Period]
+[Redirect/Period]
 Type=Hotkey
 DefaultValue=
 Description=Period
 
-[KeyTheme/Reload]
+[Redirect/Reload]
 Type=Hotkey
 DefaultValue=
 Description=Reload
 
-[KeyTheme/Separator]
+[Redirect/Separator]
 Type=Hotkey
 DefaultValue=
 Description=Separator

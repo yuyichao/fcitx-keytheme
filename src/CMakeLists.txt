@@ -6,7 +6,7 @@ include_directories(${PROJECT_BINARY_DIR})
 set(fcitx_keytheme_sources
   eim.c
   config.c
-  keytheme.c
+  redirect.c
   )
 
 fcitx_add_addon(fcitx-keytheme ${fcitx_keytheme_sources})

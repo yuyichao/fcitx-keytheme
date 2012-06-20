@@ -25,7 +25,7 @@
 #include <fcitx/instance.h>
 #include "eim.h"
 
-void KeyThemeInit();
-void ApplyKeyThemeConfig(FcitxKeyThemeConfig* fc);
+void RedirectKeyInit();
+void ApplyRedirectKeyConfig(FcitxKeyThemeConfig* fc);
 
 #endif
