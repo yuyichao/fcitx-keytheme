@@ -49,18 +49,28 @@ ShortcutInit(FcitxKeyTheme *theme)
     FcitxInstanceRegisterPreInputFilter(theme->owner, key_hook);
 }
 
-static boolean
-ShortcutSelectFirst(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
+static FcitxCandidateWordList*
+ShortcutGetWordList(FcitxKeyTheme *theme)
 {
     FcitxInputState *input_state;
     FcitxCandidateWordList *word_list;
     input_state = FcitxInstanceGetInputState(theme->owner);
     if (!input_state)
-        return false;
+        return NULL;
     word_list = FcitxInputStateGetCandidateList(input_state);
     if (!word_list)
-        return false;
+        return NULL;
     if (FcitxCandidateWordGetListSize(word_list) <= 0)
+        return NULL;
+    return word_list;
+}
+
+static boolean
+ShortcutSelectFirst(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
+{
+    FcitxCandidateWordList *word_list;
+    word_list = ShortcutGetWordList(theme);
+    if (!word_list)
         return false;
     *retval = FcitxCandidateWordChooseByIndex(word_list, 0);
     return true;
@@ -83,15 +93,9 @@ ShortcutGotoSingle(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
     int single_index;
     int cur_index;
-    FcitxInputState *input_state;
     FcitxCandidateWordList *word_list;
-    input_state = FcitxInstanceGetInputState(theme->owner);
-    if (!input_state)
-        return false;
-    word_list = FcitxInputStateGetCandidateList(input_state);
+    word_list = ShortcutGetWordList(theme);
     if (!word_list)
-        return false;
-    if (FcitxCandidateWordGetListSize(word_list) <= 0)
         return false;
     single_index = ShortcutFindSingle(word_list);
     if (single_index < 0)
@@ -107,13 +111,25 @@ ShortcutGotoSingle(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 static boolean
 ShortcutGotoFirst(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
-    return false;
+    FcitxCandidateWordList *word_list;
+    word_list = ShortcutGetWordList(theme);
+    if (!word_list)
+        return false;
+    FcitxCandidateWordSetFocus(word_list, 0);
+    return true;
 }
 
 static boolean
 ShortcutGotoLast(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
 {
-    return false;
+    int len;
+    FcitxCandidateWordList *word_list;
+    word_list = ShortcutGetWordList(theme);
+    if (!word_list)
+        return false;
+    len = FcitxCandidateWordGetListSize(word_list);
+    FcitxCandidateWordSetFocus(word_list, len - 1);
+    return true;
 }
 
 static ShortcutItem ShortcutList[] = {
