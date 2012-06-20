@@ -1,16 +1,20 @@
-## Fcitx-Sayura
+## Fcitx-KeyTheme
 
-Fcitx-Sayura is a Sinhala input method for Fcitx input method framework ported from IBus-Sayura.
+Fcitx-KeyTheme is a plugin for Fcitx input method framework that provide some
+extra shortcut as well as the ability to redefine some built-in function key.
+
+NOTE: The redirection feature might not work for some input method
+(e.g. fcitx-sunpinyin)
 
 ### License
 
-Fcitx-Sayura is a free software released under GPLv2.
+Fcitx-KeyTheme is a free software released under GPLv2.
 
 ### Install (From Source)
 
-    $git clone git@github.com:yuyichao/fcitx-sayura.git
+    $git clone https://github.com/yuyichao/fcitx-keytheme.git
 
-    $cd fcitx-sayura
+    $cd fcitx-keytheme
     $mkdir -p build
     $cd build
     $cmake .. -DCMAKE_INSTALL_PREFIX=/usr

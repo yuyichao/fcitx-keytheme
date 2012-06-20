@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-20 16:12+0800\n"
-"PO-Revision-Date: 2012-06-11 00:24+0800\n"
+"POT-Creation-Date: 2012-06-20 20:33+0800\n"
+"PO-Revision-Date: 2012-06-20 20:34+0800\n"
 "Last-Translator: Yichao Yu <yyc1992@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_CN\n"
@@ -55,7 +55,7 @@ msgid "Home"
 msgstr "行首"
 
 #: /home/yuyichao/programming/fcitx-keytheme/build/po/tmp/fcitx-keytheme.conf.in.h:1
-msgid "Keytheme"
+msgid "Key Theme"
 msgstr "按键主题"
 
 #: /home/yuyichao/programming/fcitx-keytheme/build/po/tmp/fcitx-keytheme.conf.in.h:2
@@ -105,7 +105,3 @@ msgstr "快捷键"
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
 msgid "Space"
 msgstr "空格"
-
-# unknown
-#~ msgid "KeyTheme"
-#~ msgstr "按键主题"

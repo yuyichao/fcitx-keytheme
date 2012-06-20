@@ -1,6 +1,6 @@
 [Addon]
 Name=fcitx-keytheme
-_GeneralName=Keytheme
+_GeneralName=Key Theme
 _Comment=Keytheme For Fcitx
 Category=Module
 Enabled=True
