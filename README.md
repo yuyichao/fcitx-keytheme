@@ -3,8 +3,12 @@
 Fcitx-KeyTheme is a plugin for Fcitx input method framework that provide some
 extra shortcut as well as the ability to redefine some built-in function key.
 
-NOTE: The redirection feature might not work for some input method
-(e.g. fcitx-sunpinyin)
+NOTE: The redirection feature now **SUPPORT** almost all input method engine
+(**INCLUDING fcitx-sunpinyin**). However, it might not work for certain
+input method that rely on key release events (e.g. some Japaness input method
+according to Weng Xuetian). The redirection also only work for internal Fcitx
+action (i.e. you cannot redirect a key to work as another key when the
+input method is not active).
 
 ### License
 

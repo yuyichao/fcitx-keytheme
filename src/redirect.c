@@ -18,6 +18,7 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 #include <fcitx/keys.h>
+#include <time.h>
 #include "redirect.h"
 #include "config.h"
 
@@ -57,6 +58,11 @@ RedirectKeyInit(FcitxKeyTheme *theme)
 {
     int i;
     RedirectItem *item;
+    /* When using ProcessKey to do real redirection, this backup is probably
+     * not necessary anymore (Don't think other plugins may be as crazy as
+     * this one which modify some constant in the program). Keep it for now
+     * since it doesn't cost too much either.
+     */
     for (i = 0;HotkeyList[i].index >= 0;i++) {
         item = HotkeyList + i;
         item->origkey[0] = item->hotkey[0];
@@ -67,28 +73,31 @@ RedirectKeyInit(FcitxKeyTheme *theme)
 void
 ApplyRedirectKeyConfig(FcitxKeyThemeConfig *fc)
 {
-    int i;
-    RedirectItem *item;
-    FcitxHotkey *tmpkey;
-    for (i = 0;HotkeyList[i].index >= 0;i++) {
-        item = HotkeyList + i;
-        tmpkey = fc->redirect_list[item->index];
-        if (tmpkey[0].sym != 0 && tmpkey[0].state != 0) {
-            item->hotkey[1] = tmpkey[0];
-        } else {
-            item->hotkey[1] = item->origkey[1];
-        }
-        if (tmpkey[1].sym != 0 && tmpkey[1].state != 0) {
-            item->hotkey[0] = tmpkey[1];
-        } else {
-            item->hotkey[0] = item->origkey[0];
-        }
-    }
 }
 
 boolean
 RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
                    INPUT_RETURN_VALUE *retval)
 {
-    return false;
+    static volatile boolean busy = false;
+    int i;
+    RedirectItem *item;
+    FcitxKeyThemeConfig *fc = &theme->config;
+    boolean res = false;
+    if (busy)
+        return false;
+    busy = true;
+
+    for (i = 0;(item = HotkeyList + i)->index >= 0;i++) {
+        if (FcitxHotkeyIsHotKey(sym, state, fc->redirect_list[item->index])) {
+            *retval = FcitxInstanceProcessKey(theme->owner, FCITX_PRESS_KEY,
+                                              time(NULL), item->origkey->sym,
+                                              item->origkey->state);
+            res = true;
+            break;
+        }
+    }
+
+    busy = false;
+    return res;
 }
