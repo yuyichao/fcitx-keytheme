@@ -31,6 +31,7 @@
 #include <fcitx/instance.h>
 #include <fcitx/context.h>
 #include <fcitx/module.h>
+#include <fcitx/hook.h>
 #include <libintl.h>
 
 #include "eim.h"
@@ -95,11 +96,29 @@ LoadKeyThemeConfig(FcitxKeyThemeConfig* fs)
     return true;
 }
 
+static boolean
+FcitxKeyThemePreHook(void *arg, FcitxKeySym sym, unsigned int state,
+                     INPUT_RETURN_VALUE *retval)
+{
+    FcitxKeyTheme *theme = (FcitxKeyTheme*)arg;
+    if (!retval)
+        return false;
+    if (RedirectKeyPreHook(theme, sym, state,  retval))
+        return true;
+    if (ShortcutPreHook(theme, sym, state,  retval))
+        return true;
+    return false;
+}
+
 static void*
 FcitxKeyThemeCreate(FcitxInstance *instance)
 {
     FcitxConfigFileDesc *config_desc = GetFcitxKeyThemeConfigDesc();
     FcitxKeyTheme* theme = fcitx_utils_new(FcitxKeyTheme);
+    FcitxKeyFilterHook key_hook = {
+        .arg = theme,
+        .func = FcitxKeyThemePreHook,
+    };
     theme->owner = instance;
     bindtextdomain("fcitx-keytheme", LOCALEDIR);
     if (!config_desc)
@@ -113,6 +132,9 @@ FcitxKeyThemeCreate(FcitxInstance *instance)
     ShortcutInit(theme);
 
     ApplyRedirectKeyConfig(&theme->config);
+    ApplyShortcutConfig(&theme->config);
+
+    FcitxInstanceRegisterPreInputFilter(theme->owner, key_hook);
     return theme;
 }
 

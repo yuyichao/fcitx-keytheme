@@ -24,6 +24,8 @@
 #include "eim.h"
 
 void RedirectKeyInit(FcitxKeyTheme *theme);
-void ApplyRedirectKeyConfig(FcitxKeyThemeConfig* fc);
+void ApplyRedirectKeyConfig(FcitxKeyThemeConfig *fc);
+boolean RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym,
+                           unsigned int state, INPUT_RETURN_VALUE *retval);
 
 #endif

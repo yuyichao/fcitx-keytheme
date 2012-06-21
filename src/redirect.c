@@ -65,7 +65,7 @@ RedirectKeyInit(FcitxKeyTheme *theme)
 }
 
 void
-ApplyRedirectKeyConfig(FcitxKeyThemeConfig* fc)
+ApplyRedirectKeyConfig(FcitxKeyThemeConfig *fc)
 {
     int i;
     RedirectItem *item;
@@ -84,4 +84,11 @@ ApplyRedirectKeyConfig(FcitxKeyThemeConfig* fc)
             item->hotkey[0] = item->origkey[0];
         }
     }
+}
+
+boolean
+RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
+                   INPUT_RETURN_VALUE *retval)
+{
+    return false;
 }

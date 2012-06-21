@@ -23,5 +23,8 @@
 #include "eim.h"
 
 void ShortcutInit(FcitxKeyTheme *theme);
+void ApplyShortcutConfig(FcitxKeyThemeConfig *fc);
+boolean ShortcutPreHook(FcitxKeyTheme *theme, FcitxKeySym sym,
+                        unsigned int state, INPUT_RETURN_VALUE *retval);
 
 #endif

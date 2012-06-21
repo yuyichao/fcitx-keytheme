@@ -18,7 +18,6 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 #include <fcitx/keys.h>
-#include <fcitx/hook.h>
 #include <fcitx/candidate.h>
 #include "shortcut.h"
 #include "config.h"
@@ -35,18 +34,18 @@ typedef struct {
 #define SHORTCUT_ITEM_LAST \
     {-1, NULL}
 
-static boolean
-ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
-                   INPUT_RETURN_VALUE *retval);
+boolean
+ShortcutPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
+                INPUT_RETURN_VALUE *retval);
 
 void
 ShortcutInit(FcitxKeyTheme *theme)
 {
-    FcitxKeyFilterHook key_hook = {
-        .arg = theme,
-        .func = ShortcutPreHook,
-    };
-    FcitxInstanceRegisterPreInputFilter(theme->owner, key_hook);
+}
+
+void
+ApplyShortcutConfig(FcitxKeyThemeConfig *fc)
+{
 }
 
 static FcitxCandidateWordList*
@@ -101,9 +100,8 @@ ShortcutGotoSingle(FcitxKeyTheme *theme, INPUT_RETURN_VALUE *retval)
     if (single_index < 0)
         return false;
     cur_index = FcitxCandidateWordGetCurrentIndex(word_list);
-    if (cur_index > single_index && theme->config.single_forward)
-        return false;
-    FcitxCandidateWordSetFocus(word_list, single_index);
+    if (cur_index < single_index || !theme->config.single_forward)
+        FcitxCandidateWordSetFocus(word_list, single_index);
     *retval = IRV_FLAG_UPDATE_INPUT_WINDOW;
     return true;
 }
@@ -140,12 +138,11 @@ static ShortcutItem ShortcutList[] = {
     SHORTCUT_ITEM_LAST
 };
 
-static boolean
-ShortcutPreHook(void *arg, FcitxKeySym sym, unsigned int state,
-                   INPUT_RETURN_VALUE *retval)
+boolean
+ShortcutPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
+                INPUT_RETURN_VALUE *retval)
 {
     int i;
-    FcitxKeyTheme *theme = (FcitxKeyTheme*)arg;
     for (i = 0;ShortcutList[i].action_func;i++) {
         if (FcitxHotkeyIsHotKey(
             sym, state, theme->config.shortcut_list[ShortcutList[i].index])) {
