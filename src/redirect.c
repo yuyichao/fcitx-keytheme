@@ -93,6 +93,9 @@ RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
             *retval = FcitxInstanceProcessKey(theme->owner, FCITX_PRESS_KEY,
                                               time(NULL), item->origkey->sym,
                                               item->origkey->state);
+            /* Just in case. */
+            if (!retval)
+                *retval = IRV_FLAG_BLOCK_FOLLOWING_PROCESS;
             res = true;
             break;
         }
