@@ -95,7 +95,7 @@ RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
                                               item->origkey->state);
             /* Just in case. */
             if (!retval)
-                *retval = IRV_FLAG_BLOCK_FOLLOWING_PROCESS;
+                *retval = IRV_FLAG_FORWARD_KEY;
             res = true;
             break;
         }
