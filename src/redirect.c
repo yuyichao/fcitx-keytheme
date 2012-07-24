@@ -82,8 +82,15 @@ RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
     static volatile boolean busy = false;
     int i;
     RedirectItem *item;
+    /* FcitxKeySym r_sym; */
+    /* unsigned int r_state; */
+    /* FcitxInputState *input_state; */
+    /* input_state = FcitxInstanceGetInputState(theme->owner); */
+    /* r_sym = FcitxInputStateGetKeySym(input_state); */
+    /* r_state = FcitxInputStateGetKeyState(input_state); */
     FcitxKeyThemeConfig *fc = &theme->config;
     boolean res = false;
+
     if (busy)
         return false;
     busy = true;
@@ -94,8 +101,10 @@ RedirectKeyPreHook(FcitxKeyTheme *theme, FcitxKeySym sym, unsigned int state,
                                               time(NULL), item->origkey->sym,
                                               item->origkey->state);
             /* Just in case. */
-            if (!retval)
+            if (!*retval || (*retval & IRV_FLAG_FORWARD_KEY))
                 *retval = IRV_FLAG_FORWARD_KEY;
+            else
+                *retval = IRV_FLAG_BLOCK_FOLLOWING_PROCESS;
             res = true;
             break;
         }

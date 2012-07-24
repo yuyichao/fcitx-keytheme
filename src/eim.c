@@ -145,7 +145,8 @@ FcitxKeyThemeDestroy(void *arg)
 }
 
 static void
-FcitxKeyThemeReloadConfig(void* arg) {
+FcitxKeyThemeReloadConfig(void* arg)
+{
     FcitxKeyTheme* theme = (FcitxKeyTheme*)arg;
     LoadKeyThemeConfig(&theme->config);
     ApplyRedirectKeyConfig(&theme->config);
