@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-20 20:33+0800\n"
+"POT-Creation-Date: 2012-07-26 22:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,76 +17,98 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:4
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:4
 msgid "Select the first candidate word"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:9
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
 msgid "Going to the page of the first single character candidate word"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:14
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
 msgid "Only go forward when looking for single character page"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:19
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
 msgid "Going to the first page"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:24
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
 msgid "Going to the last page"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:29
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
 msgid "Delete"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:34
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
 msgid "Backspace"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:39
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
 msgid "Home"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:44
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
 msgid "End"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:49
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:49
 msgid "Right"
 msgstr ""
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:54
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
 msgid "Left"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:59
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
 msgid "Enter"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:64
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
 msgid "Semicolon"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:69
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
 msgid "Space"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:74
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
 msgid "Comma"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:79
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
 msgid "Period"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:84
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:89
 msgid "Reload"
 msgstr ""
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:89
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:89
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:94
 msgid "Separator"
+msgstr ""
+
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+msgid "Escape"
 msgstr ""
 
 # unknown

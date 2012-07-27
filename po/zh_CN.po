@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-20 20:33+0800\n"
-"PO-Revision-Date: 2012-06-20 20:34+0800\n"
+"POT-Creation-Date: 2012-07-26 22:55-0400\n"
+"PO-Revision-Date: 2012-07-26 22:57-0400\n"
 "Last-Translator: Yichao Yu <yyc1992@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_CN\n"
@@ -18,38 +18,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:34
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:34
 msgid "Backspace"
 msgstr "退格"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:74
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
 msgid "Comma"
 msgstr "逗号"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:29
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:29
 msgid "Delete"
 msgstr "删除"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:44
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:44
 msgid "End"
 msgstr "行尾"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:59
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
 msgid "Enter"
 msgstr "回车"
 
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:59
+msgid "Escape"
+msgstr "退出"
+
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:19
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:19
 msgid "Going to the first page"
 msgstr "切换到第一页"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:24
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:24
 msgid "Going to the last page"
 msgstr "切换到最后一页"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:9
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:9
 msgid "Going to the page of the first single character candidate word"
 msgstr "切换到含有单字符的候选页"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:39
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:39
 msgid "Home"
 msgstr "行首"
@@ -62,15 +75,18 @@ msgstr "按键主题"
 msgid "Keytheme For Fcitx"
 msgstr "Fcitx的按键主题"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:54
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:54
 msgid "Left"
 msgstr "向左"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:14
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:14
 msgid "Only go forward when looking for single character page"
 msgstr "仅向前寻找单字的候选词"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:79
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:79
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
 msgid "Period"
 msgstr "句号"
 
@@ -78,23 +94,28 @@ msgstr "句号"
 msgid "Redirect"
 msgstr "重定向"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:84
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:84
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:89
 msgid "Reload"
 msgstr "重载配置"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:49
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:49
 msgid "Right"
 msgstr "向右"
 
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:4
 #: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:4
 msgid "Select the first candidate word"
 msgstr "选择第一个候选字"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:64
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:64
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
 msgid "Semicolon"
 msgstr "分号"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:89
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:89
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:94
 msgid "Separator"
 msgstr "(拼音)分隔"
 
@@ -102,6 +123,7 @@ msgstr "(拼音)分隔"
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:69
+#: /home/yuyichao/programming/fcitx-keytheme/build/pkg/usr/share/fcitx/configdesc/fcitx-keytheme.desc:69
+#: /home/yuyichao/programming/fcitx-keytheme/data/fcitx-keytheme.desc:74
 msgid "Space"
 msgstr "空格"

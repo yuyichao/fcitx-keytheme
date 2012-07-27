@@ -56,6 +56,11 @@ Description=Left
 [Redirect/Escape]
 Type=Hotkey
 DefaultValue=
+Description=Escape
+
+[Redirect/Enter]
+Type=Hotkey
+DefaultValue=
 Description=Enter
 
 [Redirect/Semicolon]
