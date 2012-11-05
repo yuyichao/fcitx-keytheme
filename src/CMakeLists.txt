@@ -9,5 +9,7 @@ set(fcitx_keytheme_sources
   redirect.c
   shortcut.c
   )
-
-fcitx_add_addon(fcitx-keytheme ${fcitx_keytheme_sources})
+fcitx_add_addon_full(keytheme
+  SOURCES ${fcitx_keytheme_sources}
+  DESC_SRC ../data/fcitx-keytheme.desc
+  CONF_SRC ../data/fcitx-keytheme.conf)
